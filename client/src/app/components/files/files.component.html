@@ -1,0 +1,98 @@
+<button type="button" class="btn btn-secondary upload mt-4" (click)="openModal(template)"><fa-icon [icon]="faFileUpload"></fa-icon> New file</button>
+
+
+<form class="mt-4">
+    <div class="form-group row">
+        <label for="ippvalue" class="col-1 col-form-label ipptext">Items</label>
+        <div class="col-2 ippbox">
+            <select class="form-control" id="ippvalue" (change)="changeipp($event)">
+                <option>3</option>
+                <option>5</option>
+                <option>10</option>
+            </select>
+        </div>
+        <pagination [directionLinks]="false" [itemsPerPage] = "pagination.ipp" [totalItems]="pagination.total" (pageChanged)="changePage($event)"
+            class="col-8">
+        </pagination>
+    </div>
+</form>
+<div class="row mt-2">
+    <div *ngFor="let file of list_uploading"  class="col-xl-3 col-md-6 col-sm-12 mt-4">
+        <circle-progress 
+            [radius]= "90"
+            [space]="-10"
+            [maxPercent]="100"
+            [outerStrokeGradient]="true"
+            [outerStrokeWidth]="10"
+            [outerStrokeColor]="'#4882c2'"
+            [outerStrokeGradientStopColor]="'#53a9ff'"
+            [innerStrokeColor]="'#e7e8ea'"
+            [innerStrokeWidth]="10"
+            [subtitle] = "file.filename"
+            [subtitleFontSize] ="'12'"
+            [percent]="file.percentage"
+            [animateTitle]="false"
+            [animationDuration]="0"
+            [showSubtitle]="true"
+            [showUnits]="true"
+            [showBackground]="false"
+            [startFromZero]="false"
+            [lazy]="true" 
+        >
+        </circle-progress>
+    </div>
+</div>
+<div class="row mt-5">
+    <div *ngFor="let file of files" class="col-xl-3 col-md-6 col-sm-12 mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{file.filename}}</h5>
+                <p class="card-text">Uploaded: {{file.uploadDate | date}}</p>
+                <p class="card-text">Size: {{file.length | fileSize}}</p>
+                <a target="blank" href="{{'http://localhost:3000' + fileService.fileUrl + '/' + file._id}}"
+                class="btn btn-success upload"><fa-icon [icon]="faFileDownload"></fa-icon> Download</a>
+                <a target="blank" href="{{'http://localhost:3000' + fileService.fileUrl + '/preview/' + file._id}}"
+                    class="btn btn-primary upload ms-2" target="_blank">
+                    <fa-icon [icon]="faFileSearch"></fa-icon> Preview
+                </a>
+                <button type="button" id="deletewbutton" class="btn btn-danger upload ms-2 col-lg-mt-2" (click)="openDeleteWarning(file,template2)"><fa-icon [icon]="faTrash"></fa-icon> Remove</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template2>
+    <div class="modal-content">
+        <div class="modal-body center">
+            <p class="center2">Are you sure?</p>
+            <button type="button" class="btn btn-light upload2 me-2" (click)="deleteFile()">
+                Yes
+            </button>
+            <button type="button" class="btn btn-secondary upload2" (click)="closeModal()">
+                No
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #template>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><fa-icon [icon]="faFileUpload"></fa-icon> New file</h5>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="closeModal()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="custom-file" id="customFile" lang="en">
+                <input type="file" class="custom-file-input" id="exampleInputFile" (change)="onFileChange($event)" aria-describedby="fileHelp">
+                <label class="custom-file-label" for="exampleInputFile">
+                </label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light upload" (click)="closeModal()">Cancel</button>
+            <button type="button" class="btn btn-success upload" (click)="upload()">Upload</button>
+        </div>
+    </div>
+</ng-template>

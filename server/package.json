@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon",
+    "idbcrs": "npm install && cd ../client && npm install && cd ../server && start npm run run_client && start npm run run_server",
+    "run_client": "cd ../client && npm run proxy",
+    "run_server": "npm run nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "busboy-body-parser": "^0.3.2",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}

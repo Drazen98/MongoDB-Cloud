@@ -1,0 +1,3 @@
+C:\Users\Zendra\Desktop\dz07\c++projekt\Projekt\Projekt\x64\Debug\Projekt.vcxproj.CopyComplete
+D:\napredne\napredne_tehnike\c++projekt\Projekt\Projekt\x64\Debug\Projekt.vcxproj.CopyComplete
+C:\Users\Zendra\Desktop\napredne_tehnike\c++projekt\Projekt\Projekt\x64\Debug\Projekt.vcxproj.CopyComplete
