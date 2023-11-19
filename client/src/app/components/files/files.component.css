@@ -1,0 +1,40 @@
+.upload{
+    border-radius: 50px;
+}
+
+.upload2{
+    border-radius: 50px;
+    width: 130px;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.center2{
+    padding-left: 30%;
+}
+
+.ipptext{
+    width: 60px;
+}
+.ippbox{
+    width: 90px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+    #deletewbutton {
+    margin-left:20% !important;
+    margin-top:10px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #deletewbutton {
+        margin-left: 20% !important;
+        margin-top: 10px;
+    }
+}
